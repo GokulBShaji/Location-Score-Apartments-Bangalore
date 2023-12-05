@@ -7,3 +7,5 @@ Project covers web-scraping, Geocoding and development of location score based o
 - With help of railway staions database made and Hospitals database available from government sourse compute location score.
 
 ## Procedure
+- Install the following libraries - Selenium,Pandas,Openpyxl
+- Install chromedriverl[link](https://chromedriver.chromium.org/downloads)
