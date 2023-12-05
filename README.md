@@ -18,5 +18,10 @@ Project covers web-scraping, Geocoding and development of location score based o
 - Hospitals.xlsx(Available in dataset.zip of this repository)file is obtained after sufficient preprocessing of the file [link](https://data.gov.in/catalog/all-india-health-centres-directory)
 - Location_of_apartments.xlsx(Available in dataset.zip of this repository)file is obtained after sufficient preprocessing of the file [link](https://www.kaggle.com/datasets/galijithendranath/locations-of-apartments-in-bangalore)
 - Then run nearest.py file.This file has to be run twice, first commenting lines(28,30,34,39,41) and then for the second time by uncommenting the above mentioned lines and commenting the following 
-  lines(29,31,35,40,42)
-- 
+  lines(29,31,35,40,42).
+- Then run Location_Score.py file and the final output with location score is obtained the excel file Location_of_apartments.xlsx.
+
+## Location Score formula
+- location score and distance from nearest railway station or Hospital are inversely proportional i.e A location near to Hospital and Raailway station have higher value compared to a location far away.
+- Higher priority is given to Nearest Hospital than Nearest Railway station
+- Hence Location Score is given a random equation aligning towards the above assumptions i.e Location Score = 1000 * ((1/(distance to nearest railway station)) + (2/(distance to nearest hospital)))
