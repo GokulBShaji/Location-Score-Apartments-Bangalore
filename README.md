@@ -1,5 +1,5 @@
 # Location-Score-Apartments-Bangalore
-Project covers web-scraping, Geocoding and development of location score based on distance from nearest Hospital and nearest Railway Station
+The Project covers web-scraping, Geocoding and development of location score based on distance from nearest Hospital and nearest Railway Station
 
 ## Objective
 - Web Scrap Names of Railway Stations.
