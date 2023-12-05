@@ -8,4 +8,15 @@ Project covers web-scraping, Geocoding and development of location score based o
 
 ## Procedure
 - Install the following libraries - Selenium,Pandas,Openpyxl
-- Install chromedriverl[link](https://chromedriver.chromium.org/downloads)
+- Install chromedriver [link](https://chromedriver.chromium.org/downloads) and place the chromdriver.exe file in the program folder(LocationScore) here.
+- Web-scraping of railway station names are done from [link](https://www.totaltraininfo.com/a.php)
+- First Run railwaystations.py file such that, the commented lines are run in pairs i.e line 16 and line 87 make a pair, the comment(16,87) and run(17,88) and so on.
+- Then Run the cleaning.py file for removing 'NA's from the last scraped file of a particular letter.This also needs to be run in pairs i.e (line 3, line38) followed by (line 4, line39) and so on
+- Then Run the Geocoding.py file. Each of the files obtained in scraping is passed to the code for geocoding i.e z1.xlsx(line 24) is passed to obtain the result z_1.xslx(line 35).
+- There are chances of of obtaing error of too many requests while running the Geocoding.py file, but patiently run the code multiple times until output file is obtained for each and every scraped file.
+- Then run combine.py file.
+- Hospitals.xlsx(Available in dataset.zip of this repository)file is obtained after sufficient preprocessing of the file [link](https://data.gov.in/catalog/all-india-health-centres-directory)
+- Location_of_apartments.xlsx(Available in dataset.zip of this repository)file is obtained after sufficient preprocessing of the file [link](https://www.kaggle.com/datasets/galijithendranath/locations-of-apartments-in-bangalore)
+- Then run nearest.py file.This file has to be run twice, first commenting lines(28,30,34,39,41) and then for the second time by uncommenting the above mentioned lines and commenting the following 
+  lines(29,31,35,40,42)
+- 
