@@ -1,43 +1,45 @@
 import pandas as pd
-from haversine import haversine, Unit
+from haversine import haversine
 
-df1 = pd.read_excel('Railway_Station.xlsx')
-df2 = pd.read_excel('Hospitals.xlsx')
-df3 = pd.read_excel('Location_of_apartments.xlsx')
-df1 = df1.dropna()
-df2 = df2.dropna()
-df3 = df3.dropna()
+df1 = pd.read_excel('Location_of_apartments.xlsx')
+df2 = pd.read_excel('Railway_Station.xlsx')
+#df2 = pd.read_excel('hospital_karnataka.xlsx')
 
-lat1 = df3['Latitude '].to_list()
-lat2 = df1['latitude'].to_list()
-lat3 = df2['Latitude'].to_list()
-lon1 = df3['Longitude '].to_list()
-lon2 = df1['longitude'].to_list()
-lon3 = df2['Longitude'].to_list()
+n1 = df1['Latitude '].to_list()
+n2 = df1['Longitude '].to_list()
 
-l1 = len(lat1)
-l2 = len(lat2)
-l3 = len(lat3)
-y = 0
-Nearest_Rail = []
-Nearest_Hospital = []
-for i in range(l1):
-    y+=1
-    coord1 = (lat1[i], lon1[i])
-    dist = []
-    #for j in range(l3):
-    for j in range(l2):
-        #coord2 = (lat3[j], lon3[j])
-        coord2 = (lat2[j], lon2[j])
-        distance_in_km = haversine(coord1, coord2, unit=Unit.KILOMETERS)
-        dist.append(distance_in_km)
-    #Nearest_Hospital.append(max(dist))
-    Nearest_Rail.append(max(dist))
-    print(max(dist))
-    print(y)
+n3 = df2['latitude'].to_list()
+n4 = df2['longitude'].to_list()
+#n3 = df2['Latitude'].to_list()
+#n4 = df2['Longitude'].to_list()
 
-#print(Nearest_Hospital)
-print(Nearest_Rail)
-#df3['Nearest_Hospital']=Nearest_Hospital
-df3['Nearest_Rail']=Nearest_Rail
-df3.to_excel('Location_of_apartments.xlsx',sheet_name='Sheet1',index=False)
+d = []
+results = []
+k = 0
+
+def min_haversine_distance(target_point, point_set):
+    min_distance = 2000.000 # randam float value
+    for point in point_set:
+        distance = haversine(target_point, point)
+        if distance < min_distance:
+            min_distance = distance
+    return min_distance
+
+l1 = len(n1)
+l2 = len(n3)
+
+for i1 in range(l2):
+    b = (n3[i1],n4[i1])
+    d.append(b)
+
+for i2 in range(l1):
+    k+=1
+    a =(n1[i2],n2[i2])
+    c =min_haversine_distance(a,d)
+    results.append(c)
+    print(c)
+    print(k)
+
+df1['Nearest_Rail'] = results
+#df1['Nearest_Hospital']=results
+df1.to_excel('Location_of_apartments.xlsx',sheet_name='Sheet1',index=False)
